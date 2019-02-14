@@ -39,7 +39,7 @@ type InstancePeer string
 
 // Account represents a Mastodon account entity
 type Account struct {
-	ID             int64         `json:"id,string"`
+	ID             string        `json:"id"`
 	Username       string        `json:"username"`
 	Acct           string        `json:"acct"`
 	DisplayName    string        `json:"display_name"`
@@ -69,7 +69,7 @@ type Application struct {
 
 // Attachment represents a Mastodon media attachment entity
 type Attachment struct {
-	ID         int64   `json:"id,string"`
+	ID         string  `json:"id"`
 	Type       string  `json:"type"`
 	URL        string  `json:"url"`
 	RemoteURL  *string `json:"remote_url"`
@@ -151,13 +151,13 @@ type Instance struct {
 
 // List represents a Mastodon list entity
 type List struct {
-	ID    int64  `json:"id,string"`
+	ID    string `json:"id"`
 	Title string `json:"title"`
 }
 
 // Mention represents a Mastodon mention entity
 type Mention struct {
-	ID       int64  `json:"id,string"`
+	ID       string `json:"id"`
 	URL      string `json:"url"`
 	Username string `json:"username"`
 	Acct     string `json:"acct"`
@@ -165,7 +165,7 @@ type Mention struct {
 
 // Notification represents a Mastodon notification entity
 type Notification struct {
-	ID        int64     `json:"id,string"`
+	ID        string    `json:"id"`
 	Type      string    `json:"type"`
 	CreatedAt time.Time `json:"created_at"`
 	Account   *Account  `json:"account"`
@@ -174,8 +174,8 @@ type Notification struct {
 
 // Relationship represents a Mastodon relationship entity
 type Relationship struct {
-	ID        int64 `json:"id,string"`
-	Following bool  `json:"following"`
+	ID        string `json:"id"`
+	Following bool   `json:"following"`
 	//ShowingReblogs      bool  `json:"showing_reblogs"` // Incoherent type
 	FollowedBy          bool `json:"followed_by"`
 	Blocking            bool `json:"blocking"`
@@ -189,7 +189,7 @@ type Relationship struct {
 
 // Report represents a Mastodon report entity
 type Report struct {
-	ID          int64  `json:"id,string"`
+	ID          string `json:"id"`
 	ActionTaken string `json:"action_taken"`
 }
 
@@ -202,12 +202,12 @@ type Results struct {
 
 // Status represents a Mastodon status entity
 type Status struct {
-	ID                 int64        `json:"id,string"`
+	ID                 string       `json:"id"`
 	URI                string       `json:"uri"`
 	URL                string       `json:"url"`
 	Account            *Account     `json:"account"`
-	InReplyToID        *int64       `json:"in_reply_to_id,string"`
-	InReplyToAccountID *int64       `json:"in_reply_to_account_id,string"`
+	InReplyToID        *string      `json:"in_reply_to_id"`
+	InReplyToAccountID *string      `json:"in_reply_to_account_id"`
 	Reblog             *Status      `json:"reblog"`
 	Content            string       `json:"content"`
 	CreatedAt          time.Time    `json:"created_at"`
@@ -235,17 +235,17 @@ type Tag struct {
 	URL     string `json:"url"`
 	History []struct {
 		Day      MastodonDate `json:"day"`
-		Uses     int64        `json:"uses,string"`
-		Accounts int64        `json:"accounts,string"`
+		Uses     string       `json:"uses"`
+		Accounts string       `json:"accounts"`
 	} `json:"history"`
 }
 
 // WeekActivity represents a Mastodon instance activity "week" entity
 type WeekActivity struct {
 	Week          MastodonDate `json:"week"`
-	Statuses      int64        `json:"statuses,string"`
-	Logins        int64        `json:"logins,string"`
-	Registrations int64        `json:"registrations,string"`
+	Statuses      string       `json:"statuses"`
+	Logins        string       `json:"logins"`
+	Registrations string       `json:"registrations"`
 }
 
 // Field is a single field structure
